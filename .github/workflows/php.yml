@@ -24,6 +24,9 @@ jobs:
     - name: Install Composer Dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Enable the module
+      run: php bin/magento module:enable Custom_Purchased
+      
     - name: Running DI Compilations
       run: php bin/magento setup:di:compile
 
