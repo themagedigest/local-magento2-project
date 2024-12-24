@@ -10,7 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
 
-    - name: Run test suite
-      run: php -d xdebug.mode=coverage vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist --coverage-html reports app/code/MageDigest/
+    - name: Set up PHP 8.3
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: xdebug, pdo_mysql
+        coverage: xdebug
+        ini-values: memory_limit=2G, post_max_size=256M
+
+    - name: Install Composer Dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run PHPUnit Tests
+      run: |
+        php -d xdebug.mode=coverage vendor/bin/phpunit \
+        -c dev/tests/unit/phpunit.xml.dist \
+        --coverage-html reports \
+        app/code/MageDigest/
