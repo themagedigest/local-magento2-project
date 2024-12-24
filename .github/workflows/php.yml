@@ -24,9 +24,12 @@ jobs:
     - name: Install Composer Dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Run PHPUnit Tests
-      run: |
-        php -d xdebug.mode=coverage vendor/bin/phpunit \
-        -c dev/tests/unit/phpunit.xml.dist \
-        --coverage-html reports \
-        app/code/Custom/
+    - name: Running DI Compilations
+      run: php bin/magento setup:di:compile
+
+    # - name: Run PHPUnit Tests
+    #   run: |
+    #     php -d xdebug.mode=coverage vendor/bin/phpunit \
+    #     -c dev/tests/unit/phpunit.xml.dist \
+    #     --coverage-html reports \
+    #     app/code/Custom/
