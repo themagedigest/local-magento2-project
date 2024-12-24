@@ -50,9 +50,9 @@
         <ini name="xdebug.max_nesting_level" value="200"/>
     </php>
     <extensions>
-        <bootstrap class="Qameta\Allure\PHPUnit\AllureExtension">
+        <!-- <bootstrap class="Qameta\Allure\PHPUnit\AllureExtension">
             <!-- Path to config file (default is config/allure.config.php) -->
             <parameter name="config" value="allure/allure.config.php" />
-        </bootstrap>
+        </bootstrap> -->
     </extensions>
 </phpunit>
