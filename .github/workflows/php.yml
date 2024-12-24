@@ -1,0 +1,19 @@
+name: Test Magento 2
+
+on:
+  push:
+    branches: [ "dev-task" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Run test suite
+      run: php -d xdebug.mode=coverage vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist --coverage-html reports app/code/MageDigest/
