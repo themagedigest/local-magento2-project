@@ -29,4 +29,4 @@ jobs:
         php -d xdebug.mode=coverage vendor/bin/phpunit \
         -c dev/tests/unit/phpunit.xml.dist \
         --coverage-html reports \
-        app/code/MageDigest/
+        app/code/Custom/
